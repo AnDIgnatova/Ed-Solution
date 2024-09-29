@@ -180,10 +180,10 @@ body {
   height: 43px;
   display: block;
   position: absolute;
-  top: 0;
+  top: 2px;
   padding: 10px;
   z-index: 5;
-  right: 30px;
+  right: 25px;
 
 
   @media(min-width: 768px){
