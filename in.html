@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Круговой Контейнер с Блоками</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e0e0e0;
+        }
+
+        .circle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .block {
+            padding: 15px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .block img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .block:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="circle-container" id="circle-container"></div>
+
+    <script>
+        const items = [
+            { text: "Блок 1", img: "https://via.placeholder.com/40" },
+            { text: "Блок 2 с длинным текстом.", img: "https://via.placeholder.com/40" },
+            { text: "Блок 3", img: "https://via.placeholder.com/40" },
+            { text: "Блок 4", img: "https://via.placeholder.com/40" },
+            { text: "Блок 5", img: "https://via.placeholder.com/40" },
+        ];
+
+        const container = document.getElementById('circle-container');
+
+        items.forEach(item => {
+            const block = document.createElement('div');
+            block.className = 'block';
+            block.innerHTML = `<img src="${item.img}" alt="img">${item.text}`;
+            container.appendChild(block);
+        });
+
+        // Обновление радиуса контейнера
+        function updateCircleRadius() {
+            const blocks = document.querySelectorAll('.block');
+            const blockCount = blocks.length;
+            const blockWidth = blocks[0].offsetWidth; // Ширина одного блока
+            const radius = (blockCount * (blockWidth + 20)) / (2 * Math.PI); // Формула для радиуса
+
+            container.style.width = `${radius * 2}px`;
+            container.style.height = `${radius * 2}px`;
+        }
+
+        // Вызываем функцию обновления радиуса после добавления блоков
+        updateCircleRadius();
+    </script>
+</body>
+</html>
