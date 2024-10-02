@@ -38,6 +38,7 @@ body {
   font-style: normal;
 }
 
+
 .sidenav {
   display: none;
   height: 100vh;
@@ -47,6 +48,7 @@ body {
   top: 30px;
   left: 0;
   background-color: rgba(149, 100, 170, 0.1);
+  border: solid 2px rgba(149, 100, 170, 0.2);
   overflow-x: hidden;
   padding-top: 20px;
   border-radius: 10px;
@@ -59,8 +61,8 @@ body {
 .sidenav a {
   padding: 0 0 0 29px;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 1);
   display: block;
 }
 
@@ -563,17 +565,18 @@ body {
 }
 
 .sidenav-profile {
-  margin-left: 30px;
+  margin-left: 20px;
   margin-right: 20px;
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   padding-bottom: 22px;
-  border-bottom: 3px solid rgb(213, 145, 242);
-  gap: 15px;
+  border-bottom: 3px solid rgb(213, 145, 242, 0.2);
 }
 
 .sidenav-profile__info {
+  margin-left: 15px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -598,12 +601,13 @@ body {
 
 .main h1 {
   padding-bottom: 15px;
-  border-bottom: solid 3px rgb(236, 192, 254);
+  border-bottom: solid 2px rgba(149, 100, 170, 0.2);
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
+  font-size: 20px;
   @media (min-width: 1120px) {
-    text-shadow: 5px 5px 5px rgb(120, 120, 120);
-    font-size: 48px;
+    text-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 40px;
   }
 
 }
@@ -624,10 +628,8 @@ body {
 
 .main-timer__discount {
   color: rgba(255, 207, 45, 1);
-  text-shadow: 1px 0 1px #ffffff, 
-  0 1px 1px #ffffff, 
-  -1px 0 1px #ffffff, 
-  0 -1px 1px #ffffff;
+  -webkit-text-stroke: 1px #FFFFFF;
+  text-stroke: 1px #FFFFFF;
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -866,7 +868,7 @@ cursor: pointer;
   left: -20px;
   z-index: 1099;
   @media (min-width: 768px) {
-    top: -6px;
+    top: -15px;
     left: 132px;
   }
   @media (min-width: 991px) {
@@ -924,9 +926,9 @@ cursor: pointer;
   user-select: none;
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 10px;
   @media (min-width: 768px) {
-    font-size: 20px;
+    font-size: 13px;
   }
 }
 .custom-checkbox+label::before {
@@ -1008,7 +1010,6 @@ cursor: pointer;
   display: inline-flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-  align-items: center;
   text-align: center;
   height: 100px; 
   width: 100px;
@@ -1023,6 +1024,7 @@ cursor: pointer;
 
 
 .card-img-group {
+  margin: 0 auto;
   width: 64px;
   height: 64px;
   background-color: rgba(149, 100, 170, 0.1);
@@ -1058,6 +1060,14 @@ cursor: pointer;
 }
 
 .card_title {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: auto;
+  
+}
+
+.card_title h4 {
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
   font-size: 12px;
@@ -1133,38 +1143,32 @@ cursor: pointer;
 
 
 
-.parallax {
-  perspective: 1px;
+
+
+
+.containerr {
   position: relative;
-  overflow: auto;
-}
-.parallax-layer1 {
-  display: none;
-  @media (min-width: 1220px) {
-    display: block;
-    position: absolute;
-    top: 250px;
-  }
+  width: 300px; /* Регулируйте размер контейнера */
+  height: 300px; /* Регулируйте размер контейнера */
 }
 
-.parallax-layer2 {
-  display: none;
-  @media (min-width: 1220px) {
-    display: block;
-    position: absolute;
-    top: 250px;
-    right: 0;
-  }
+.block {
+  position: absolute;
+  width: auto; /* Блоки будут адаптивными */
+  padding: 10px 15px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.2s ease;
 }
 
-.parallax-image {
-  transform: translateZ(0);
-  object-fit: contain;
-}
-
-.parallax-section {
-  @media (min-width: 1220px) {
-    transform: translateZ(-2px) translateX(0) translateY(100px) scale(3);
-  }
-  
-}
+/* Исполнение блока по кругу */
+.block:nth-child(1) { transform: rotate(0deg) translate(120px) rotate(0deg); }
+.block:nth-child(2) { transform: rotate(72deg) translate(120px) rotate(-72deg); }
+.block:nth-child(3) { transform: rotate(144deg) translate(120px) rotate(-144deg); }
+.block:nth-child(4) { transform: rotate(216deg) translate(120px) rotate(-216deg); }
+.block:nth-child(5) { transform: rotate(288deg) translate(120px) rotate(-288deg); }
